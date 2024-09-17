@@ -31,3 +31,10 @@ As a part of this test, I have covered below scenario's with given details and s
 - File -1 : RiskSmartAutomation.spec.js (This file has script code for above three test sceanrios)
 - File -2 : Playwright.config.js (This file has all details of timeouts, Browsers etc.)
 - Bonus step : Playwright.config.js file also has command to capture screenshot on test failure.
+
+  # How to run the test
+  - Install Node.js and VisualStudeio
+  - Download all Playwright dependency with commant 'npm init playwright@latest'
+  - Import 'RiskSmartAutomation.spec.js' file under '/tests' folder
+  - Import 'Playwright.config.js' file under main folder.
+  - Run Playwright test from command line with command 'npx playwright test tests/RiskSmartAutomation.spec.js'.
