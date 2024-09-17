@@ -5,21 +5,24 @@ test("AddProducttoCart", async({page})=>
 { 
 await page.goto("https://www.demoblaze.com/");
 await page.getByRole('link', { name: 'Laptops' }).click();
-  await page.getByRole('link', { name: 'MacBook air' }).click();
+await page.getByRole('link', { name: 'MacBook air' }).click();
   page.once('dialog', dialog => {
-    console.log(`Dialog message: ${dialog.message()}`);
-    dialog.dismiss().catch(() => {});
+   console.log(`Dialog message: ${dialog.message()}`);
+   dialog.dismiss().catch(() => {});
   });
   await page.getByRole('link', { name: 'Add to cart' }).click();
   await page.getByRole('link', { name: 'Cart', exact: true }).click();
+
+  await page.locator("tbody").waitFor();
   const bool = page.getByRole('cell', { name: 'MacBook air' }).isVisible();
   expect(bool).toBeTruthy();
 
   const bool1 = page.getByRole('cell', { name: '700' }).isVisible();
   expect(bool1).toBeTruthy();
 
- const totalPrice = await page.locator('#totalp').allTextContents();
- console.log(totalPrice);
+  const totalPrice = await page.locator(".panel-title").textContent();
+  console.log(totalPrice);
+
 }
 )
 
