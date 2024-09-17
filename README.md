@@ -3,8 +3,8 @@ Risk Smart Automation
 As a part of this test, I have covered below scenario's with given details and setps.
 
 # Test Scenario-1 : 'Add Product to Cart'
->>Navigate to 'www.demoblaze.com'and navigate to Laptop category.
->>Added 'MacBook Air' to cart sucessfully.
+- Navigate to 'www.demoblaze.com'and navigate to Laptop category.
+- Added 'MacBook Air' to cart sucessfully.
 >>Captured dailog message 'Product added sucessfully' and print it to console.
 >>Navigate to Cart page.
 >>Assersions to check 'MacBook Air' and '700' price is visible and correct.
