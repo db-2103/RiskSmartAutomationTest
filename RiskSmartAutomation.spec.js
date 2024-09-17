@@ -1,14 +1,12 @@
-const {test,expect} = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 
-
-test("AddProducttoCart", async({page})=>
-{ 
-await page.goto("https://www.demoblaze.com/");
-await page.getByRole('link', { name: 'Laptops' }).click();
-await page.getByRole('link', { name: 'MacBook air' }).click();
+test("AddProducttoCart", async ({ page }) => {
+  await page.goto("https://www.demoblaze.com/");
+  await page.getByRole('link', { name: 'Laptops' }).click();
+  await page.getByRole('link', { name: 'MacBook air' }).click();
   page.once('dialog', dialog => {
-   console.log(`Dialog message: ${dialog.message()}`);
-   dialog.dismiss().catch(() => {});
+    console.log(`Dialog message: ${dialog.message()}`);
+    dialog.dismiss().catch(() => { });
   });
   await page.getByRole('link', { name: 'Add to cart' }).click();
   await page.getByRole('link', { name: 'Cart', exact: true }).click();
@@ -22,28 +20,22 @@ await page.getByRole('link', { name: 'MacBook air' }).click();
 
   const totalPrice = await page.locator(".panel-title").textContent();
   console.log(totalPrice);
+})
 
-}
-)
-
-
-test("SendMessage", async({page})=>
-{
-await page.goto('https://www.demoblaze.com/');
+test("SendMessage", async ({ page }) => {
+  await page.goto('https://www.demoblaze.com/');
   await page.getByRole('link', { name: 'Contact' }).click();
   await page.locator('#recipient-email').fill('test@gmail.com');
   await page.getByLabel('Contact Email:').fill('test');
   await page.getByLabel('Message:').fill('test message');
   page.once('dialog', dialog => {
     console.log(`Dialog message: ${dialog.message()}`);
-    dialog.dismiss().catch(() => {});
+    dialog.dismiss().catch(() => { });
   });
   await page.getByRole('button', { name: 'Send message' }).click();
 })
 
-
-test("SearchProduct", async({page})=>
-{
+test("SearchProduct", async ({ page }) => {
   await page.goto('https://magento.softwaretestingboard.com/');
   await page.locator('#search').fill('jacket');
   await page.locator('#search').press('Enter');
@@ -54,5 +46,4 @@ test("SearchProduct", async({page})=>
   await page.locator('#search').fill('jaket');
   await page.locator('#search').press('Enter');
   console.log(await page.getByText('Your search returned no').allTextContents());
-
 })
